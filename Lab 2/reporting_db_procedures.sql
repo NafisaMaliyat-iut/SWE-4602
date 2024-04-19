@@ -15,7 +15,7 @@ end//
 call get_top_3_products;
 
 
-create procedure get_top_2_categories()
+create or replace procedure get_top_2_categories()
 begin
     select c.id, c.name, sum(s.UnitPrice * s.Count) as total_sales
     from dimension_category c
@@ -26,7 +26,7 @@ begin
 end//
 call get_top_2_categories();
 
-create procedure get_top_product_by_duration(
+create or replace procedure get_top_product_by_duration(
     in start_date date,
     in end_date date
 )
@@ -41,7 +41,7 @@ end//
 call get_top_product_by_duration('2024-01-01', '2024-02-16');
 
 
-create procedure get_top_product_by_category(
+create or replace procedure get_top_product_by_category(
     in category_id int
 )
 begin
@@ -54,7 +54,7 @@ begin
 end//
 call get_top_product_by_category(1);
 
-create procedure get_top_employee_by_duration(
+create or replace procedure get_top_employee_by_duration(
     in start_date date,
     in end_date date
 )

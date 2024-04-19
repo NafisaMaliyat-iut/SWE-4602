@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Date;
+
 @Service
 public class OrderService {
     @Autowired
@@ -18,11 +20,12 @@ public class OrderService {
     @Autowired
     private RestTemplate restTemplate;
     public Order saveOrder(Order order) {
+        order.setDate(new Date());
         return orderRepository.save(order);
     }
-    public Order findOrderById(String orderId) {
-        return orderRepository.findOrderById(orderId);
-    }
+//    public Order findOrderById(String orderId) {
+//        return orderRepository.findOrderById(orderId);
+//    }
 
     public ResponseValueObject getOrder(String orderId) {
         ResponseValueObject responseValueObject = new ResponseValueObject();
@@ -34,7 +37,6 @@ public class OrderService {
         responseValueObject.setProduct(product);
         responseValueObject.setEmployee(employee);
         responseValueObject.setOrder(order);
-        System.out.println(product);
         return responseValueObject;
     }
 }

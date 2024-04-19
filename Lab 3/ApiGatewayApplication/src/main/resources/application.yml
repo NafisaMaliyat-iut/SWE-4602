@@ -9,19 +9,19 @@ spring:
       mvc:
         routes:
           - id: EMPLOYEE-SERVICE
-            uri: http://localhost:9002
+            uri: lb://EMPLOYEE-SERVICE
             predicates:
              - Path=/employees/**
           - id: CUSTOMER-SERVICE
-            uri: http://localhost:9004
+            uri: lb://CUSTOMER-SERVICE
             predicates:
               - Path=/customers/**
           - id: PRODUCT-SERVICE
-            uri: http://localhost:9003
+            uri: lb://PRODUCT-SERVICE
             predicates:
               - Path=/products/**
           - id: ORDER-SERVICE
-            uri: http://localhost:9006
+            uri: lb://ORDER-SERVICE
             predicates:
               - Path=/orders/**
 
